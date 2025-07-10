@@ -1,13 +1,10 @@
-처음 과제 제시를 받았을 때는 기본적인 기능들을 빠르게 수업 복습을 통해 구현하고 페이지 분리 등의 추가적인 구현을 하고자 하였습니다.  
+처음 과제 제시를 받았을 때는 기본적인 기능들을 수업 복습을 통해 빠르게 구현하고 추가적인 기능 구현을 하고자 하였습니다.  
 
-그러나, 과제를 수행하면서 수업 중 간단히 넘어갔던 부분에 대해서 살펴보고 ai와 문답하는 과정에서 hook과 같은 react의 기본에 대해 많이 공부하고 친숙해 지는 것이 최종 프론트엔드 과제 수행에 가장 도움이 될 것 같다고 느꼈습니다.  
+그러나, 과제를 수행하면서 수업 중 가볍게 넘어갔던 부분에 대해서 살펴보았고 또 ai와 문답하는 과정에서 hook과 같은 react의 기본에 대해  익숙해 지는 것이 react에 대한 이해와 최종 프론트엔드 과제 수행에 가장 도움이 될 것 같다고 느꼈습니다.  
 
-이에 따라 README를 일반적인 프로그램의 기능 소개 및 설계가 아닌, 일종의 학습 레포트 형식으로 작성하게 되었습니다.
+이에 따라 README를 일반적인 프로그램의 기능 및 설계에 대한 상세가 아닌, 일종의 학습 레포트 형식으로 작성하게 되었습니다.
 
 <br><br><br>
-
-
-
 
 # 학습과정
 ## 등록기능(handleInputChnge) 비제어 컴포넌트 vs 제어 컴포넌트
@@ -51,12 +48,11 @@ const inputValue = e.target.elements.todo.value;
 
 <br><br><br>
 
-
 ## useRef vs useState 무엇으로 관리해야 할까?
 
-### ID의 경우 useRef를 사용하는 것이 더 적절하다.
-ID의 값이 변경되라도 컴포넌트가 다시 렌더링 될 필요가 없으므로 useRef를 사용하는 것이 좋다.  
+### ID의 경우 useRef를 사용하는 것이 더 적절하다. 
 
+ID의 값이 변경되라도 컴포넌트가 다시 렌더링 될 필요가 없으므로 useRef를 사용하는 것이 좋다.  
 
 ### Input, Form 에서는?  
 
@@ -89,7 +85,7 @@ function TodoSubmitForm({ addTodo }) {
 
 ```
 
-위의 `handleInputChange` (useRef에선 handleOnSubmit)의 경우 gemini를 통해 학습하며 얻어낸 코드여서 useRef대신 useState를 사용하여 코드를 작성한 이유를 다시 gemini에게 물으며 학습을 시작했다.
+위의 `handleOnSubmit` (원래 코드에선 handleInputChange)의 경우 gemini를 통해 학습할 때는 useRef대신 useState를 사용하여 코드를 작성하였으나, 코드에 대해 수정을 권유 하지 않았다. WTL에서 useRef를 사용하는 것은 어떠냐고 피드백을 받았고 이에 대해 gemini에게 질문하며 학습을 시작했다.
 
 계속해서 문답을 했지만 gemini의 경우 useState사용을 권장하여서 여러 자료를 통해 검증해보려 하였고 이를 통해 내린 결론은 다음과 같다.
 
@@ -100,10 +96,10 @@ function TodoSubmitForm({ addTodo }) {
 
 [What is BETTER useState or useRef, when handling multiple form inputs in React?](https://stackoverflow.com/questions/76086163/what-is-better-usestate-or-useref-when-handling-multiple-form-inputs-in-react?newreg=bcdb4a27d3b4486191c9694f0680b324)
 
-[Top 6 React Hook Mistakes Beginners Make](https://youtu.be/GGo3MVBFr1A?si=_5oDEIFm1qFKWT7j&t=39) (위의 stackoverflow질문 글에서 언급된 '상태가 필요하지 않으면 state를 사용하는 것은 실수이다' 라고 하는 영상)
+[🅰️ Top 6 React Hook Mistakes Beginners Make](https://youtu.be/GGo3MVBFr1A?si=_5oDEIFm1qFKWT7j&t=39) (위의 stackoverflow질문 글에서 언급된 '상태가 필요하지 않으면 state를 사용하는 것은 실수이다' 라고 하는 영상)
 
 
-한편 해당 질문 글에 대해 React는 가상DOM을 통한 리렌더링 최적화가 이루어지므로 useState를 사용하여도 괜찮다고 하는 답변
+🅱️ 한편 해당 질문 글에 대해 React는 가상DOM을 통한 리렌더링 최적화가 이루어지므로 useState를 사용하여도 괜찮다고 하는 한 stackoverflow 사용자의 답변
 
 <details>
 <summary> 답변 내용 </summary>  
@@ -116,8 +112,10 @@ function TodoSubmitForm({ addTodo }) {
 </details>  
 <br>
 
+[🅱️ React 공식 문서에서도 Form 처리를 useState의 사용례로 제시한다.](https://react.dev/reference/react/useState#updating-objects-and-arrays-in-state)
 
-[useRef VS useState GPT를 이용한 정리](https://chatgpt.com/share/686e9a11-9228-8006-89a1-ead96ce157d0)
+
+[🅱️ useRef VS useState GPT를 이용한 정리](https://chatgpt.com/share/686e9a11-9228-8006-89a1-ead96ce157d0)
 <details>
 <summary> 문답 내용 정리 </summary>  
 
